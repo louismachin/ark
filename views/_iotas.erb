@@ -1,0 +1,32 @@
+<div class="collection-header">
+    <h2>All Entries</h2>
+    <span class="meta">342 entries &mdash; sorted by date added (newest first)</span>
+</div>
+
+<div class="entry-list">
+    <% for iota in @iotas %>
+        <div class="entry">
+            <input type="checkbox">
+            <div class="entry-body">
+                <div class="entry-title"><a href="#"><%= iota.title %></a></div>
+                <div class="entry-meta">
+                    <span>added <strong><%= iota.created_at %></strong></span>
+                    <span>in <a href="#">Collection A</a></span>
+                    <span>type: <a href="#"><%= iota.type %></a></span>
+                </div>
+                <div class="entry-desc"><%= iota.description %></div>
+                <div class="entry-tags">
+                    <% for tag in iota.tags %>
+                        <a href="#"><%= tag %></a>
+                    <% end %>
+                </div>
+            </div>
+            <div class="entry-actions">
+                <a href="#">edit</a>
+                <a href="#">delete</a>
+                <a href="#">attach</a>
+                <a href="#">link</a>
+            </div>
+        </div>
+    <% end %>
+</div>

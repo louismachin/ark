@@ -1,0 +1,59 @@
+<div id="sidebar">
+    <div class="sbox">
+        <h3>Collections</h3>
+        <ul>
+            <li><a href="#" class="active">All entries <span class="sbox-count">342</span></a></li>
+            <li class="sep"></li>
+            <li><a href="#">Collection A <span class="sbox-count">84</span></a></li>
+            <li><a href="#">Collection B <span class="sbox-count">57</span></a></li>
+            <li><a href="#">Collection C <span class="sbox-count">120</span></a></li>
+            <li><a href="#">Collection D <span class="sbox-count">31</span></a></li>
+            <% for collection in collections do %>
+                <li><a href="#"><%= collection.name %> <span class="sbox-count"><%= collection.count %></span></a></li>
+            <% end %>
+            <li class="sep"></li>
+            <li><a href="#">+ New collection</a></li>
+        </ul>
+    </div>
+
+    <div class="sbox">
+        <h3>Filter by type</h3>
+        <ul>
+            <li><a href="#">All types <span class="sbox-count">342</span></a></li>
+            <li><a href="#">Objects <span class="sbox-count">110</span></a></li>
+            <li><a href="#">Writings <span class="sbox-count">98</span></a></li>
+            <li><a href="#">Pictures <span class="sbox-count">74</span></a></li>
+            <li><a href="#">Other <span class="sbox-count">60</span></a></li>
+        </ul>
+    </div>
+
+    <div class="sbox">
+        <h3>Tag cloud</h3>
+        <div class="tag-cloud">
+            <a href="#" class="xl">archive</a>
+            <a href="#" class="lg">material</a>
+            <a href="#">found</a>
+            <a href="#" class="lg">text</a>
+            <a href="#" class="sm">ephemera</a>
+            <a href="#">image</a>
+            <a href="#" class="xl">personal</a>
+            <a href="#" class="sm">draft</a>
+            <a href="#">reference</a>
+            <a href="#" class="lg">object</a>
+            <a href="#">note</a>
+            <a href="#" class="sm">place</a>
+            <a href="#">memory</a>
+        </div>
+    </div>
+
+    <div class="sbox">
+        <h3>Recent</h3>
+        <ul>
+            <li><a href="#">Example entry title</a></li>
+            <li><a href="#">Another item added</a></li>
+            <li><a href="#">Third recent entry</a></li>
+            <li><a href="#">A writing piece</a></li>
+            <li><a href="#">One more item</a></li>
+        </ul>
+    </div>
+</div>
