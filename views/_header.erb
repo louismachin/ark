@@ -1,0 +1,32 @@
+<div id="header">
+    <div id="header-inner">
+        <a href="#" id="logo">ARK<span>personal archive</span></a>
+        <nav id="header-nav">
+            <a href="#" class="active">Collections</a>
+            <a href="#">Browse</a>
+            <a href="#">Writings</a>
+            <a href="#">Pictures</a>
+            <a href="#">Tags</a>
+            <a href="#">Import</a>
+        </nav>
+        <div id="header-search">
+            <input id="search-input" type="text" placeholder="search archive...">
+            <button id="search-button">Search</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const search_input = document.getElementById('search-input')
+    const search_button = document.getElementById('search-button')
+
+    search_input.onkeypress = (event) => {
+        if (event.key == 'Enter') {
+            window.location = '/search?q=' + encodeURIComponent(search_input.value)
+        }
+    }
+
+    search_button.onclick = (event) => {
+        window.location = '/search?q=' + encodeURIComponent(search_input.value)
+    }
+</script>
