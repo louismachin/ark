@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARK</title>
+<link rel="stylesheet" href="./style.css"> 
+</head>
+<body>
+
+<!-- Header -->
+<div id="header">
+  <div id="header-inner">
+    <a href="#" id="logo">ARK<span>personal archive</span></a>
+    <nav id="header-nav">
+      <a href="#" class="active">Collections</a>
+      <a href="#">Browse</a>
+      <a href="#">Writings</a>
+      <a href="#">Pictures</a>
+      <a href="#">Tags</a>
+      <a href="#">Import</a>
+    </nav>
+    <div id="header-search">
+      <input type="text" placeholder="search archive...">
+      <button>Search</button>
+    </div>
+  </div>
+</div>
+
+<!-- Page -->
+<div id="page">
+
+  <!-- Sidebar -->
+  <div id="sidebar">
+
+    <div class="sbox">
+      <h3>Collections</h3>
+      <ul>
+        <li><a href="#" class="active">All entries <span class="sbox-count">342</span></a></li>
+        <li class="sep"></li>
+        <li><a href="#">Collection A <span class="sbox-count">84</span></a></li>
+        <li><a href="#">Collection B <span class="sbox-count">57</span></a></li>
+        <li><a href="#">Collection C <span class="sbox-count">120</span></a></li>
+        <li><a href="#">Collection D <span class="sbox-count">31</span></a></li>
+        <% for collection in @collections do %>
+          <li><a href="#"><%= collection.name %> <span class="sbox-count"><%= collection.count %></span></a></li>
+        <% end %>
+        <li class="sep"></li>
+        <li><a href="#">+ New collection</a></li>
+      </ul>
+    </div>
+
+    <div class="sbox">
+      <h3>Filter by type</h3>
+      <ul>
+        <li><a href="#">All types <span class="sbox-count">342</span></a></li>
+        <li><a href="#">Objects <span class="sbox-count">110</span></a></li>
+        <li><a href="#">Writings <span class="sbox-count">98</span></a></li>
+        <li><a href="#">Pictures <span class="sbox-count">74</span></a></li>
+        <li><a href="#">Other <span class="sbox-count">60</span></a></li>
+      </ul>
+    </div>
+
+    <div class="sbox">
+      <h3>Tag cloud</h3>
+      <div class="tag-cloud">
+        <a href="#" class="xl">archive</a>
+        <a href="#" class="lg">material</a>
+        <a href="#">found</a>
+        <a href="#" class="lg">text</a>
+        <a href="#" class="sm">ephemera</a>
+        <a href="#">image</a>
+        <a href="#" class="xl">personal</a>
+        <a href="#" class="sm">draft</a>
+        <a href="#">reference</a>
+        <a href="#" class="lg">object</a>
+        <a href="#">note</a>
+        <a href="#" class="sm">place</a>
+        <a href="#">memory</a>
+      </div>
+    </div>
+
+    <div class="sbox">
+      <h3>Recent</h3>
+      <ul>
+        <li><a href="#">Example entry title</a></li>
+        <li><a href="#">Another item added</a></li>
+        <li><a href="#">Third recent entry</a></li>
+        <li><a href="#">A writing piece</a></li>
+        <li><a href="#">One more item</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <!-- /sidebar -->
+
+  <!-- Main -->
+  <div id="main">
+
+    <div id="breadcrumb">
+      <a href="#">ark</a> &raquo; <a href="#">collections</a> &raquo; all entries
+    </div>
+
+    <div id="toolbar">
+      <a href="#" class="btn primary">+ Add Entry</a>
+      <a href="#" class="btn">Edit</a>
+      <a href="#" class="btn">Delete</a>
+      <div class="toolbar-sep"></div>
+      <a href="#" class="btn">Attach file</a>
+      <a href="#" class="btn">Export</a>
+      <div id="view-toggle">
+        View:
+        <a href="#" class="active">list</a>
+        <a href="#">table</a>
+        <a href="#">grid</a>
+      </div>
+    </div>
+
+    <div class="collection-header">
+      <h2>All Entries</h2>
+      <span class="meta">342 entries &mdash; sorted by date added (newest first)</span>
+    </div>
+
+    <div class="entry-list">
+
+      <div class="entry">
+        <input type="checkbox">
+        <div class="entry-body">
+          <div class="entry-title"><a href="#">Example Entry Title</a></div>
+          <div class="entry-meta">
+            <span>added <strong>12 Mar 2024</strong></span>
+            <span>in <a href="#">Collection A</a></span>
+            <span>type: <a href="#">object</a></span>
+          </div>
+          <div class="entry-desc">A short description or excerpt associated with this entry. Can be a note, a transcription, a caption, or left empty.</div>
+          <div class="entry-tags">
+            <a href="#">archive</a>
+            <a href="#">material</a>
+            <a href="#">found</a>
+          </div>
+        </div>
+        <div class="entry-actions">
+          <a href="#">edit</a>
+          <a href="#">delete</a>
+          <a href="#">attach</a>
+          <a href="#">link</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <input type="checkbox">
+        <div class="entry-body">
+          <div class="entry-title"><a href="#">Another Item in the Archive</a></div>
+          <div class="entry-meta">
+            <span>added <strong>10 Mar 2024</strong></span>
+            <span>in <a href="#">Collection B</a></span>
+            <span>type: <a href="#">writing</a></span>
+          </div>
+          <div class="entry-desc">Writings can carry longer text bodies. This is a placeholder for whatever fields your schema defines for this type.</div>
+          <div class="entry-tags">
+            <a href="#">text</a>
+            <a href="#">personal</a>
+            <a href="#">draft</a>
+          </div>
+        </div>
+        <div class="entry-actions">
+          <a href="#">edit</a>
+          <a href="#">delete</a>
+          <a href="#">attach</a>
+          <a href="#">link</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <input type="checkbox">
+        <div class="entry-body">
+          <div class="entry-title"><a href="#">A Third Entry of Some Kind</a></div>
+          <div class="entry-meta">
+            <span>added <strong>28 Feb 2024</strong></span>
+            <span>in <a href="#">Collection A</a></span>
+            <span>type: <a href="#">picture</a></span>
+          </div>
+          <div class="entry-desc">Pictures may show a thumbnail here or just carry metadata and a caption. Depends on your implementation.</div>
+          <div class="entry-tags">
+            <a href="#">image</a>
+            <a href="#">memory</a>
+          </div>
+        </div>
+        <div class="entry-actions">
+          <a href="#">edit</a>
+          <a href="#">delete</a>
+          <a href="#">attach</a>
+          <a href="#">link</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <input type="checkbox">
+        <div class="entry-body">
+          <div class="entry-title"><a href="#">Fourth Entry, No Description</a></div>
+          <div class="entry-meta">
+            <span>added <strong>14 Feb 2024</strong></span>
+            <span>in <a href="#">Collection C</a></span>
+            <span>type: <a href="#">object</a></span>
+          </div>
+          <div class="entry-tags">
+            <a href="#">object</a>
+            <a href="#">reference</a>
+            <a href="#">ephemera</a>
+          </div>
+        </div>
+        <div class="entry-actions">
+          <a href="#">edit</a>
+          <a href="#">delete</a>
+          <a href="#">attach</a>
+          <a href="#">link</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <input type="checkbox">
+        <div class="entry-body">
+          <div class="entry-title"><a href="#">Fifth Item Listed Here</a></div>
+          <div class="entry-meta">
+            <span>added <strong>30 Jan 2024</strong></span>
+            <span>in <a href="#">Collection A</a></span>
+            <span>type: <a href="#">writing</a></span>
+          </div>
+          <div class="entry-desc">Another placeholder entry to fill out the list view.</div>
+          <div class="entry-tags">
+            <a href="#">archive</a>
+            <a href="#">note</a>
+          </div>
+        </div>
+        <div class="entry-actions">
+          <a href="#">edit</a>
+          <a href="#">delete</a>
+          <a href="#">attach</a>
+          <a href="#">link</a>
+        </div>
+      </div>
+
+      <% for iota in @iotas %>
+        <div class="entry">
+          <input type="checkbox">
+          <div class="entry-body">
+            <div class="entry-title"><a href="#"><%= iota.title %></a></div>
+            <div class="entry-meta">
+              <span>added <strong><%= iota.created_at %></strong></span>
+              <span>in <a href="#">Collection A</a></span>
+              <span>type: <a href="#"><%= iota.type %></a></span>
+            </div>
+            <div class="entry-desc"><%= iota.description %></div>
+            <div class="entry-tags">
+              <% for tag in iota.tags %>
+                <a href="#"><%= tag %></a>
+              <% end %>
+            </div>
+          </div>
+          <div class="entry-actions">
+            <a href="#">edit</a>
+            <a href="#">delete</a>
+            <a href="#">attach</a>
+            <a href="#">link</a>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+    <!-- /entry-list -->
+
+    <div id="pagination">
+      <a href="#">&laquo; prev</a>
+      <span class="current">1</span>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <span class="gap">&hellip;</span>
+      <a href="#">18</a>
+      <a href="#">next &raquo;</a>
+      <span style="margin-left: 10px; border: none; background: none; font-size: 11px; color: #888;">showing 1&ndash;20 of 342</span>
+    </div>
+
+  </div>
+  <!-- /main -->
+
+</div>
+<!-- /page -->
+
+<div id="footer">
+  ARK &mdash; personal archive &mdash;
+  <a href="#">about</a> &middot;
+  <a href="#">export</a> &mdash;
+  342 entries across 4 collections
+</div>
+
+</body>
+</html>
