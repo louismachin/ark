@@ -20,9 +20,9 @@
         <h3>Filter by type</h3>
         <ul>
             <li><a href="#">All types <span class="sbox-count">342</span></a></li>
-            <li><a href="#">Objects <span class="sbox-count">110</span></a></li>
-            <li><a href="#">Writings <span class="sbox-count">98</span></a></li>
-            <li><a href="#">Pictures <span class="sbox-count">74</span></a></li>
+            <% PLURAL_IOTA_TYPE_LABELS.each do |label| %>
+                <li><a href="#"><%=label %> <span class="sbox-count"><%= rand(999) %></span></a></li>
+            <% end %>
             <li><a href="#">Other <span class="sbox-count">60</span></a></li>
         </ul>
     </div>

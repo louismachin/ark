@@ -1,11 +1,24 @@
 class Iota
-    attr_reader :title, :description, :tags, :type, :created_at
+    attr_reader :title, :description, :tags, :type, :created_at, :metadata
 
-    def initialize
-        @title = 'Example Entry Title'
-        @description = 'A short description or excerpt associated with this entry. Can be a note, a transcription, a caption, or left empty.'
-        @tags = ['archive', 'material', 'found']
-        @type = 'object'
-        @created_at = '2024-03-12'
+    def initialize(title:, description:, tags:, type:, created_at:, metadata: {})
+        @title       = title
+        @description = description
+        @tags        = tags
+        @type        = type
+        @created_at  = created_at
+        @metadata    = metadata
+    end
+
+    def object?
+        @type == 'object'
+    end
+
+    def picture?
+        @type == 'picture'
+    end
+
+    def writing?
+        @type == 'writing'
     end
 end

@@ -1,0 +1,84 @@
+<div class="collection-header">
+    <h2>Add Entry</h2>
+    <span class="meta">Archive a new iota</span>
+</div>
+
+<form class="entry-form" action="/iotas/new" method="post" enctype="multipart/form-data">
+
+    <div class="form-section">
+
+        <div class="form-row">
+            <label for="iota_title">Title</label>
+            <input type="text" id="iota_title" name="iota[title]" class="field-input" placeholder="Entry title">
+        </div>
+
+        <div class="form-row two-col">
+            <div>
+                <label for="iota_type">Type</label>
+                <select id="iota_type" name="iota[type]" class="field-input">
+                    <option value="object">Object</option>
+                    <option value="picture">Picture</option>
+                    <option value="writing">Writing</option>
+                </select>
+            </div>
+            <div>
+                <label for="iota_created_at">Date archived</label>
+                <input type="date" id="iota_created_at" name="iota[created_at]" class="field-input field-input-narrow">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <label for="iota_description">Description</label>
+            <textarea id="iota_description" name="iota[description]" class="field-input" rows="4" placeholder="Short description of this entry&hellip;"></textarea>
+        </div>
+
+        <div class="form-row">
+            <label for="iota_tags">Tags</label>
+            <input type="text" id="iota_tags" name="iota[tags]" class="field-input" placeholder="comma, separated, tags">
+        </div>
+
+        <div class="form-row">
+            <label for="iota_attachment">Attachment</label>
+            <input type="file" id="iota_attachment" name="iota[attachment]">
+        </div>
+
+        <div class="form-row">
+            <label>Metadata</label>
+            <div id="metadata-rows" class="metadata-rows">
+                <div class="metadata-row">
+                    <input type="text" name="iota[metadata_keys][]" class="field-input" placeholder="key">
+                    <span class="metadata-eq">=</span>
+                    <input type="text" name="iota[metadata_values][]" class="field-input" placeholder="value">
+                    <a href="#" class="btn metadata-remove" onclick="return removeMetadataRow(this)">&times;</a>
+                </div>
+            </div>
+            <a href="#" class="btn metadata-add" onclick="return addMetadataRow()">+ add field</a>
+        </div>
+
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn primary">Add Entry</button>
+        <a href="/iotas" class="btn">Cancel</a>
+        <span class="form-hint">* required fields</span>
+    </div>
+
+</form>
+
+<script>
+function addMetadataRow() {
+    var container = document.getElementById('metadata-rows');
+    var row = container.firstElementChild.cloneNode(true);
+    row.querySelectorAll('input').forEach(function (input) { input.value = ''; });
+    container.appendChild(row);
+    return false;
+}
+
+function removeMetadataRow(link) {
+    var container = document.getElementById('metadata-rows');
+    if (container.children.length > 1) {
+        link.closest('.metadata-row').remove();
+    }
+    return false;
+}
+</script>

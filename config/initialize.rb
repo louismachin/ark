@@ -15,4 +15,7 @@ end
 require_relative '../models/iota'
 require_relative '../models/collection'
 
+require_relative '../helpers/dummy'
+require_relative '../helpers/definitions'
+
 require_relative '../routes/index'
