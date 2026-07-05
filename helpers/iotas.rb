@@ -13,3 +13,7 @@ end
 def clear_iota_cache
     $iota_cache = nil
 end
+
+def get_collections
+    return []
+end

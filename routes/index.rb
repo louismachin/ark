@@ -23,21 +23,26 @@ post '/iotas/new' do
  
     tags = (iota_params[:tags] || '').split(',').map(&:strip).reject(&:empty?)
  
-    keys   = Array(iota_params[:metadata_keys])
+    keys = Array(iota_params[:metadata_keys])
     values = Array(iota_params[:metadata_values])
     metadata = keys.zip(values).each_with_object({}) do |(k, v), hash|
         next if k.nil? || k.strip.empty?
         hash[k.strip] = v.to_s.strip
     end
+
+    created_at = iota_params[:created_at]
+    created_at = Date.today.to_s if created_at == nil || created_at == ''
  
     iota = Iota.new(
         title:       iota_params[:title],
         description: iota_params[:description],
         tags:        tags,
         type:        iota_params[:type],
-        created_at:  iota_params[:created_at],
+        created_at:  created_at,
         metadata:    metadata
     )
+
+    iota.save
 
     puts iota.inspect
  
