@@ -297,7 +297,6 @@ a:visited { color: #6a1a8a; }
 .entry-meta {
     font-size: var(--font-size-sm);
     color: #888;
-    margin-bottom: var(--padding-sm);
 }
 .entry-meta span { margin-right: 8px; }
 .entry-meta a { color: #888; }
@@ -307,7 +306,7 @@ a:visited { color: #6a1a8a; }
     font-size: var(--font-size);
     color: #555;
     line-height: 1.5;
-    margin-bottom: var(--padding-sm);
+    margin: var(--padding-sm) 0;
 }
 
 .entry-tags a {
@@ -316,7 +315,6 @@ a:visited { color: #6a1a8a; }
     background: #4a6ea8;
     text-decoration: none;
     padding: 0 4px;
-    margin-right: 2px;
     border-radius: var(--border-radius);
     display: inline-block;
     line-height: 1.6;
