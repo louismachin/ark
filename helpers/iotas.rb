@@ -10,6 +10,10 @@ def get_iotas
     end
 end
 
+def get_recent_iotas(n = 5)
+    get_iotas.sort_by(&:created_at).last(n)
+end
+
 def clear_iota_cache
     $iota_cache = nil
 end

@@ -9,7 +9,7 @@
             <li><a href="#">Collection C <span class="sbox-count">120</span></a></li>
             <li><a href="#">Collection D <span class="sbox-count">31</span></a></li>
             <% for collection in collections do %>
-                <li><a href="#"><%= collection.name %> <span class="sbox-count"><%= collection.size %></span></a></li>
+                <li><a href="#"><%= collection.title %> <span class="sbox-count"><%= collection.size %></span></a></li>
             <% end %>
             <li class="sep"></li>
             <li><a href="#">+ New collection</a></li>
@@ -49,11 +49,9 @@
     <div class="sbox">
         <h3>Recent</h3>
         <ul>
-            <li><a href="#">Example entry title</a></li>
-            <li><a href="#">Another item added</a></li>
-            <li><a href="#">Third recent entry</a></li>
-            <li><a href="#">A writing piece</a></li>
-            <li><a href="#">One more item</a></li>
+            <% for iota in get_recent_iotas do %>
+                <li><a href="/iotas/<%= iota.id %>"><%= iota.title %></a></li>
+            <% end %>
         </ul>
     </div>
 </div>

@@ -4,6 +4,10 @@ get '/' do
     erb :index
 end
 
+not_found do
+    redirect '/'
+end
+
 get '/iotas/new' do
     @collections = get_collections
     @iotas = get_iotas

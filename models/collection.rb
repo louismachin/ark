@@ -1,11 +1,11 @@
 class Collection
     COLLECTION_PATH = File.join(DATA_PATH, 'collections')
 
-    attr_reader :id, :name, :description, :tags, :created_at, :metadata, :iota_ids
+    attr_reader :id, :title, :description, :tags, :created_at, :metadata, :iota_ids
 
-    def initialize(name:, description:, tags:, created_at:, metadata: {}, iota_ids: [], id: nil)
+    def initialize(title:, description:, tags:, created_at:, metadata: {}, iota_ids: [], id: nil)
         @id          = id || SecureRandom.hex(8)
-        @name        = name
+        @title       = title
         @description = description
         @tags        = tags
         @created_at  = created_at
@@ -16,7 +16,7 @@ class Collection
     def to_hash
         {
             'id'          => id,
-            'name'        => name,
+            'title'       => title,
             'description' => description,
             'tags'        => tags,
             'created_at'  => created_at,
@@ -39,7 +39,7 @@ class Collection
     def self.from_hash(hash)
         new(
             id:          hash['id'],
-            name:        hash['name'],
+            title:       hash['title'],
             description: hash['description'],
             tags:        hash['tags'] || [],
             created_at:  hash['created_at'],
