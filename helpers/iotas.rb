@@ -1,12 +1,14 @@
-$iota_cache = nil
-
 def get_iotas
     return $iota_cache if $iota_cache
 
     FileUtils.mkdir_p(Iota::IOTA_PATH)
 
     $iota_cache = Dir.glob(File.join(Iota::IOTA_PATH, '*.yml')).map do |file|
-        Iota.from_hash(YAML.load_file(file))
+        iota = Iota.from_hash(YAML.load_file(file))
+        $object_count += 1 if iota.object?
+        $writing_count += 1 if iota.writing?
+        $picture_count += 1 if iota.picture?
+        iota
     end
 end
 
@@ -14,8 +16,26 @@ def get_recent_iotas(n = 5)
     get_iotas.sort_by(&:created_at).last(n)
 end
 
-def clear_iota_cache
+def clear_cache
     $iota_cache = nil
+    $object_count = 0
+    $writing_count = 0
+    $picture_count = 0
+    $collection_cache = nil
+end
+
+clear_cache
+
+def get_iota_counts
+    {
+        'All types' => get_iotas.size,
+        'Objects'   => $object_count,
+        'Writings'  => $writing_count,
+        'Pictures'  => $picture_count,
+        'Other'     => (
+            get_iotas.size - $object_count - $writing_count - $picture_count
+        ),
+    }
 end
 
 def find_iota_by_id(id)
@@ -25,7 +45,6 @@ def find_iota_by_id(id)
     return nil
 end
 
-$collection_cache = nil
 
 def get_collections
     return $collection_cache if $collection_cache
@@ -36,11 +55,6 @@ def get_collections
         Collection.from_hash(YAML.load_file(file))
     end
 end
-
-def clear_collection_cache
-    $collection_cache = nil
-end
-
 
 # Returns [[tag, css_class], ...] sorted alphabetically by tag.
 # css_class is one of 'sm', nil (default size), 'lg', 'xl' based on

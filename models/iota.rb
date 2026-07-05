@@ -30,7 +30,7 @@ class Iota
     def save
         FileUtils.mkdir_p(IOTA_PATH)
         File.write(path, to_hash.to_yaml)
-        clear_iota_cache
+        clear_cache
         self
     end
 

@@ -56,7 +56,6 @@ post '/iotas/new' do
     )
 
     iota.save
-    clear_collection_cache
 
     puts iota.inspect
  

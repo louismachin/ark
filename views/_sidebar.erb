@@ -15,11 +15,11 @@
     <div class="sbox">
         <h3>Filter by type</h3>
         <ul>
-            <li><a href="#">All types <span class="sbox-count">342</span></a></li>
+            <li><a href="#">All types <span class="sbox-count"><%= get_iota_counts['All types'] %></span></a></li>
             <% PLURAL_IOTA_TYPE_LABELS.each do |label| %>
-                <li><a href="#"><%=label %> <span class="sbox-count"><%= rand(999) %></span></a></li>
+                <li><a href="#"><%=label %> <span class="sbox-count"><%= get_iota_counts[label] %></span></a></li>
             <% end %>
-            <li><a href="#">Other <span class="sbox-count">60</span></a></li>
+            <li><a href="#">Other <span class="sbox-count"><%= get_iota_counts['Other'] %></span></a></li>
         </ul>
     </div>
 

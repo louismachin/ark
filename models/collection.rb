@@ -26,7 +26,7 @@ class Collection
     def save
         FileUtils.mkdir_p(COLLECTION_PATH)
         File.write(path, to_hash.to_yaml)
-        clear_collection_cache
+        clear_cache
         self
     end
 
