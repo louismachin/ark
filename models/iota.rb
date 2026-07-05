@@ -1,5 +1,5 @@
 class Iota
-    IOTA_DIR = File.join(DATA_DIR, 'iotas')
+    IOTA_PATH = File.join(DATA_PATH, 'iotas')
 
     attr_reader :id, :title, :description, :tags, :type, :created_at, :metadata
 
@@ -26,14 +26,14 @@ class Iota
     end
 
     def save
-        FileUtils.mkdir_p(IOTA_DIR)
+        FileUtils.mkdir_p(IOTA_PATH)
         File.write(path, to_hash.to_yaml)
         clear_iota_cache
         self
     end
 
     def path
-        File.join(IOTA_DIR, "#{id}.yml")
+        File.join(IOTA_PATH, "#{id}.yml")
     end
 
     def self.from_hash(hash)

@@ -6,8 +6,6 @@ require 'yaml'
 require 'securerandom'
 require 'fileutils'
 
-DATA_DIR = File.join(File.dirname(__FILE__), '..', 'data')
-
 configure do
     set :bind, '0.0.0.0'
     set :port, APP_PORT
