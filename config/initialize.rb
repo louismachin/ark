@@ -23,3 +23,4 @@ require_relative '../helpers/definitions'
 require_relative '../helpers/iotas'
 
 require_relative '../routes/index'
+require_relative '../routes/api'
