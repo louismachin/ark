@@ -62,4 +62,8 @@ class Iota
     def writing?
         @type == 'writing'
     end
+
+    def other?
+        [self.object?, self.picture?, self.writing?].none?
+    end
 end

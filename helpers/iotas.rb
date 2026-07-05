@@ -5,9 +5,10 @@ def get_iotas
 
     $iota_cache = Dir.glob(File.join(Iota::IOTA_PATH, '*.yml')).map do |file|
         iota = Iota.from_hash(YAML.load_file(file))
-        $object_count += 1 if iota.object?
+        $object_count  += 1 if iota.object?
         $writing_count += 1 if iota.writing?
         $picture_count += 1 if iota.picture?
+        $other_count   += 1 if iota.other?
         iota
     end
 end
@@ -17,10 +18,11 @@ def get_recent_iotas(n = 5)
 end
 
 def clear_cache
-    $iota_cache = nil
-    $object_count = 0
-    $writing_count = 0
-    $picture_count = 0
+    $iota_cache       = nil
+    $object_count     = 0
+    $writing_count    = 0
+    $picture_count    = 0
+    $other_count      = 0
     $collection_cache = nil
 end
 
@@ -32,9 +34,7 @@ def get_iota_counts
         'Objects'   => $object_count,
         'Writings'  => $writing_count,
         'Pictures'  => $picture_count,
-        'Other'     => (
-            get_iotas.size - $object_count - $writing_count - $picture_count
-        ),
+        'Other'     => $other_count,
     }
 end
 
