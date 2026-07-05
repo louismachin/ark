@@ -7,7 +7,9 @@
         <%= erb :_sidebar %>
         <div id="main">
             <%= erb :_breadcrumb %>
-            <%= erb :_iota_form %>
+            <%= erb :_toolbar, locals: { collections: 1 } %>
+            <%= erb :_collections, locals: { collections: defined?(@collections) ? @collections : get_collections } %>
+            <%= erb :_pagination %>
         </div>
     </div>
     <%= erb :_footer %>

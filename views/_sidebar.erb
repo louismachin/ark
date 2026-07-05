@@ -4,7 +4,7 @@
         <ul>
             <li><a href="#" class="active">All entries <span class="sbox-count"><%= get_iotas.size %></span></a></li>
             <li class="sep"></li>
-            <% for collection in collections do %>
+            <% for collection in get_collections do %>
                 <li><a href="#"><%= collection.title %> <span class="sbox-count"><%= collection.size %></span></a></li>
             <% end %>
             <li class="sep"></li>

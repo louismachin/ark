@@ -1,5 +1,9 @@
 <div id="toolbar">
-    <a href="/iotas/new" class="btn primary">+ Add Entry</a>
+    <% if defined?(collections) %>
+        <a href="/collections/new" class="btn primary">+ Add Collection</a>
+    <% else %>
+        <a href="/iotas/new" class="btn primary">+ Add Entry</a>
+    <% end %>
     <a href="#" class="btn">Edit</a>
     <a href="#" class="btn">Delete</a>
     <div class="toolbar-sep"></div>

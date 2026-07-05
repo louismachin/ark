@@ -4,11 +4,11 @@
 <body>
     <%= erb :_header %>
     <div id="page">
-        <%= erb :_sidebar, locals: { collections: @collections } %>
+        <%= erb :_sidebar %>
         <div id="main">
             <%= erb :_breadcrumb %>
             <%= erb :_toolbar %>
-            <%= erb :_iotas, locals: { iotas: @iotas } %>
+            <%= erb :_iotas, locals: { iotas: defined?(@iotas) ? @iotas : get_iotas } %>
             <%= erb :_pagination %>
         </div>
     </div>

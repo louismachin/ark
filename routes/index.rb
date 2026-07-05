@@ -1,31 +1,27 @@
 get '/' do
-    @collections = get_collections
-    @iotas = get_iotas
-    erb :index
+    erb :iotas
 end
 
 not_found do
     redirect '/'
 end
 
+get '/collections' do
+    erb :collections
+end
+
 get '/iotas/new' do
-    @collections = get_collections
-    @iotas = get_iotas
     erb :iota_edit
 end
 
 get '/collections/new' do
-    @collections = get_collections
-    @iotas = get_iotas
     erb :collection_edit
 end
 
 get '/search' do
     query = params['q']
     puts "query=#{query}"
-    @collections = get_collections
-    @iotas = get_iotas
-    erb :index
+    erb :iotas
 end
  
 post '/iotas/new' do

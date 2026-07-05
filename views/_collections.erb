@@ -1,0 +1,31 @@
+<div class="collection-header">
+    <h2>All Collections</h2>
+    <span class="meta"><%= collections.size %> collections &mdash; sorted by date added (newest first)</span>
+</div>
+
+<div class="entry-list">
+    <% for collection in collections %>
+        <div class="entry">
+            <input type="checkbox">
+            <div class="entry-body">
+                <div class="entry-title"><a href="#"><%= collection.title %></a></div>
+                <div class="entry-meta">
+                    <span>added <strong><%= collection.created_at %></strong></span>
+                    <span>has <a href="#"><%= collection.size %> <%= collection.size == 1 ? 'entry' : 'entries' %></a></span>
+                </div>
+                <div class="entry-desc"><%= collection.description %></div>
+                <div class="entry-tags">
+                    <% for tag in collection.tags %>
+                        <a href="#"><%= tag %></a>
+                    <% end %>
+                </div>
+            </div>
+            <div class="entry-actions">
+                <a href="#">edit</a>
+                <a href="#">delete</a>
+                <a href="#">attach</a>
+                <a href="#">link</a>
+            </div>
+        </div>
+    <% end %>
+</div>
