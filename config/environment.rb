@@ -1,4 +1,4 @@
-APP_TITLE = 'Archive'
+APP_TITLE = 'Ark'
 APP_PORT = '9393'
 APP_ROOT = File.expand_path('..', __dir__)
 DATA_PATH = File.join(APP_ROOT, 'data')
