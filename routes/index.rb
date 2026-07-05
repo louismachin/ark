@@ -1,11 +1,11 @@
 get '/' do
-    @collections = Array.new(3) { Collection.new }
+    @collections = get_collections
     @iotas = get_iotas
     erb :index
 end
 
 get '/iotas/new' do
-    @collections = Array.new(3) { Collection.new }
+    @collections = get_collections
     @iotas = get_iotas
     erb :iota_edit
 end
@@ -13,7 +13,7 @@ end
 get '/search' do
     query = params['q']
     puts "query=#{query}"
-    @collections = Array.new(3) { Collection.new }
+    @collections = get_collections
     @iotas = get_iotas
     erb :index
 end

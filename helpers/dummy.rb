@@ -82,3 +82,44 @@ def get_dummy_iotas
         )
     ]
 end
+
+def get_dummy_collections
+    [
+        Collection.new(
+            name:        'North Dig Site',
+            description: 'Material recovered from the 2024 excavation at the north site, mostly ceramics and small metal objects.',
+            tags:        ['excavation', 'ceramics', '2024'],
+            created_at:  '2024-01-10',
+            metadata:    { 'location' => 'north-01', 'lead' => 'field team A' },
+            iota_ids:    get_iotas.sample(3).map(&:id)
+        ),
+        Collection.new(
+            name:        'Found Photographs',
+            description: 'Unlabeled and undated photographs collected from estate sales and donations.',
+            tags:        ['photos', 'undated', 'estate'],
+            created_at:  '2024-02-20',
+            metadata:    { 'source' => 'donation' }
+        ),
+        Collection.new(
+            name:        'Correspondence',
+            description: 'Letters, notes, and diary fragments with no clear attribution.',
+            tags:        ['letters', 'diary', 'handwritten'],
+            created_at:  '2024-03-05',
+            metadata:    { 'condition' => 'mixed' }
+        ),
+        Collection.new(
+            name:        'Household Objects',
+            description: 'Small everyday objects recovered from a single estate, uncategorized by room.',
+            tags:        ['household', 'estate', 'misc'],
+            created_at:  '2024-04-01',
+            metadata:    {}
+        ),
+        Collection.new(
+            name:        'Kitchen Ephemera',
+            description: 'Recipe cards, menus, and other paper material related to food and cooking.',
+            tags:        ['kitchen', 'recipes', 'paper'],
+            created_at:  '2024-04-25',
+            metadata:    { 'medium' => 'paper' }
+        )
+    ]
+end
