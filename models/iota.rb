@@ -1,27 +1,29 @@
 class Iota
     IOTA_PATH = File.join(DATA_PATH, 'iotas')
 
-    attr_reader :id, :title, :description, :tags, :type, :created_at, :metadata
+    attr_reader :id, :title, :description, :tags, :type, :created_at, :metadata, :collection_ids
 
-    def initialize(title:, description:, tags:, type:, created_at:, metadata: {}, id: nil)
-        @id          = id || SecureRandom.hex(8)
-        @title       = title
-        @description = description
-        @tags        = tags
-        @type        = type
-        @created_at  = created_at
-        @metadata    = metadata
+    def initialize(title:, description:, tags:, type:, created_at:, metadata: {}, collection_ids: [], id: nil)
+        @id             = id || SecureRandom.hex(8)
+        @title          = title
+        @description    = description
+        @tags           = tags
+        @type           = type
+        @created_at     = created_at
+        @metadata       = metadata
+        @collection_ids = collection_ids
     end
 
     def to_hash
         {
-            'id'          => id,
-            'title'       => title,
-            'description' => description,
-            'tags'        => tags,
-            'type'        => type,
-            'created_at'  => created_at,
-            'metadata'    => metadata
+            'id'             => id,
+            'title'          => title,
+            'description'    => description,
+            'tags'           => tags,
+            'type'           => type,
+            'created_at'     => created_at,
+            'metadata'       => metadata,
+            'collection_ids' => collection_ids,
         }
     end
 
@@ -38,13 +40,14 @@ class Iota
 
     def self.from_hash(hash)
         new(
-            id:          hash['id'],
-            title:       hash['title'],
-            description: hash['description'],
-            tags:        hash['tags'] || [],
-            type:        hash['type'],
-            created_at:  hash['created_at'],
-            metadata:    hash['metadata'] || {}
+            id:             hash['id'],
+            title:          hash['title'],
+            description:    hash['description'],
+            tags:           hash['tags'] || [],
+            type:           hash['type'],
+            created_at:     hash['created_at'],
+            metadata:       hash['metadata'] || {},
+            collection_ids: hash['collection_ids'] || [],
         )
     end
 

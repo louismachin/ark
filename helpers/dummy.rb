@@ -6,7 +6,8 @@ def get_dummy_iotas
             tags:        ['archive', 'found', 'ceramic'],
             type:        'object',
             created_at:  '2024-01-08',
-            metadata:    { 'site' => 'north-01', 'depth_cm' => '42' }
+            metadata:    { 'site' => 'north-01', 'depth_cm' => '42' },
+            collection_ids: [get_collections.sample.id]
         ),
         Iota.new(
             title:       'Polaroid, unlabeled interior',
@@ -22,7 +23,8 @@ def get_dummy_iotas
             tags:        ['archive', 'found', 'letter'],
             type:        'writing',
             created_at:  '2024-03-02',
-            metadata:    { 'pages' => '1', 'language' => 'en' }
+            metadata:    { 'pages' => '1', 'language' => 'en' },
+            collection_ids: [get_collections.sample.id]
         ),
         Iota.new(
             title:       'Brass key, no matching lock',
@@ -46,7 +48,8 @@ def get_dummy_iotas
             tags:        ['archive', 'found', 'photo'],
             type:        'writing',
             created_at:  '2024-04-22',
-            metadata:    { 'medium' => 'index card' }
+            metadata:    { 'medium' => 'index card' },
+            collection_ids: [get_collections.sample.id]
         ),
         Iota.new(
             title:       'Wooden button, hand-carved',
@@ -91,7 +94,6 @@ def get_dummy_collections
             tags:        ['excavation', 'ceramics', '2024'],
             created_at:  '2024-01-10',
             metadata:    { 'location' => 'north-01', 'lead' => 'field team A' },
-            iota_ids:    get_iotas.sample(3).map(&:id)
         ),
         Collection.new(
             title:       'Found Photographs',

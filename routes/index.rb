@@ -40,26 +40,30 @@ post '/iotas/new' do
         hash[k.strip] = v.to_s.strip
     end
 
+    collection_ids = iota_params[:collection_id] ? [iota_params[:collection_id]] : []
+
     created_at = iota_params[:created_at]
     created_at = Date.today.to_s if created_at == nil || created_at == ''
  
     iota = Iota.new(
-        title:       iota_params[:title],
-        description: iota_params[:description],
-        tags:        tags,
-        type:        iota_params[:type],
-        created_at:  created_at,
-        metadata:    metadata
+        title:          iota_params[:title],
+        description:    iota_params[:description],
+        tags:           tags,
+        type:           iota_params[:type],
+        created_at:     created_at,
+        metadata:       metadata,
+        collection_ids: collection_ids,
     )
 
     iota.save
+    clear_collection_cache
 
     puts iota.inspect
  
     # TODO: persist `iota` somewhere (file, DB, in-memory store, etc.)
     # TODO: handle iota_params[:attachment] (a Sinatra file upload hash
     #       with :tempfile, :filename, :type) if present
- 
+
     redirect '/'
 end
 

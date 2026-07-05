@@ -10,7 +10,6 @@ class Collection
         @tags        = tags
         @created_at  = created_at
         @metadata    = metadata
-        @iota_ids    = iota_ids
     end
 
     def to_hash
@@ -21,7 +20,6 @@ class Collection
             'tags'        => tags,
             'created_at'  => created_at,
             'metadata'    => metadata,
-            'iota_ids'    => iota_ids,
         }
     end
 
@@ -44,15 +42,14 @@ class Collection
             tags:        hash['tags'] || [],
             created_at:  hash['created_at'],
             metadata:    hash['metadata'] || {},
-            iota_ids:    hash['iota_ids'] || [],
         )
     end
 
     def iotas
-        @iotas ||= @iota_ids.map { |iota_id| find_iota_by_id(iota_id) }.compact
+        @iotas ||= get_iotas.select { |iota| iota.collection_ids.include?(self.id) }
     end
 
     def size
-        @iota_ids.size
+        self.iotas.size
     end
 end

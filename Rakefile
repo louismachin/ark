@@ -10,7 +10,7 @@ end
 
 task :dummy do
   require_relative './config/initialize'
-  get_dummy_iotas.each { |iota| iota.save }
   get_dummy_collections.each { |collection| collection.save }
+  get_dummy_iotas.each { |iota| iota.save }
 # Sinatra::Application.run!
 end

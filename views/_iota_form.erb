@@ -1,6 +1,6 @@
 <div class="collection-header">
     <h2>Add Entry</h2>
-    <span class="meta">Archive a new iota</span>
+    <span class="meta">Archive a new entry</span>
 </div>
 
 <form class="entry-form" action="/iotas/new" method="post" enctype="multipart/form-data">
@@ -25,6 +25,16 @@
                 <label for="iota_created_at">Date archived</label>
                 <input type="date" id="iota_created_at" name="iota[created_at]" class="field-input field-input-narrow">
             </div>
+        </div>
+
+        <div class="form-row">
+            <label for="iota_collection_id">Collection</label>
+            <select id="iota_collection_id" name="iota[collection_id]" class="field-input">
+                <option value="">None</option>
+                <% for collection in get_collections %>
+                    <option value="<%= collection.id %>"><%= collection.title %></option>
+                <% end %>
+            </select>
         </div>
 
         <div class="form-row">
