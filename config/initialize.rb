@@ -2,6 +2,11 @@ require_relative './environment'
 
 require 'sinatra'
 require 'redcarpet'
+require 'yaml'
+require 'securerandom'
+require 'fileutils'
+
+DATA_DIR = File.join(File.dirname(__FILE__), '..', 'data')
 
 configure do
     set :bind, '0.0.0.0'
@@ -17,5 +22,6 @@ require_relative '../models/collection'
 
 require_relative '../helpers/dummy'
 require_relative '../helpers/definitions'
+require_relative '../helpers/iotas'
 
 require_relative '../routes/index'

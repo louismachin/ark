@@ -1,20 +1,20 @@
 get '/' do
     @collections = Array.new(3) { Collection.new }
-    @iotas = get_dummy_iotas
+    @iotas = get_iotas
     erb :index
 end
 
-get '/entry/new' do
+get '/iotas/new' do
     @collections = Array.new(3) { Collection.new }
-    @iotas = get_dummy_iotas
-    erb :entry_edit
+    @iotas = get_iotas
+    erb :iota_edit
 end
 
 get '/search' do
     query = params['q']
     puts "query=#{query}"
     @collections = Array.new(3) { Collection.new }
-    @iotas = get_dummy_iotas
+    @iotas = get_iotas
     erb :index
 end
  
@@ -38,10 +38,12 @@ post '/iotas/new' do
         created_at:  iota_params[:created_at],
         metadata:    metadata
     )
+
+    puts iota.inspect
  
     # TODO: persist `iota` somewhere (file, DB, in-memory store, etc.)
     # TODO: handle iota_params[:attachment] (a Sinatra file upload hash
     #       with :tempfile, :filename, :type) if present
  
-    redirect '/iotas'
+    redirect '/'
 end
