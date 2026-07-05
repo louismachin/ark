@@ -11,7 +11,9 @@
                 <div class="entry-title"><a href="#"><%= iota.title %></a></div>
                 <div class="entry-meta">
                     <span>added <strong><%= iota.created_at %></strong></span>
-                    <span>in <a href="#">Collection A</a></span>
+                    <% if iota.collection %>
+                        <span>in <a href="#"><%= iota.collection.title %></a></span>
+                    <% end %>
                     <span>type: <a href="#"><%= iota.type %></a></span>
                 </div>
                 <div class="entry-desc"><%= iota.description %></div>

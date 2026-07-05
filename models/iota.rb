@@ -52,18 +52,23 @@ class Iota
     end
 
     def object?
-        @type == 'object'
+        type == 'object'
     end
 
     def picture?
-        @type == 'picture'
+        type == 'picture'
     end
 
     def writing?
-        @type == 'writing'
+        type == 'writing'
     end
 
     def other?
         [self.object?, self.picture?, self.writing?].none?
+    end
+
+    def collection # assumes 1 collection
+        return nil unless collection_ids
+        find_collection_by_id(collection_ids.first)
     end
 end

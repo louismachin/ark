@@ -56,6 +56,13 @@ def get_collections
     end
 end
 
+def find_collection_by_id(id)
+    for collection in get_collections do
+        return collection if collection.id == id
+    end
+    return nil
+end
+
 # Returns [[tag, css_class], ...] sorted alphabetically by tag.
 # css_class is one of 'sm', nil (default size), 'lg', 'xl' based on
 # how often the tag appears relative to the least/most common tag.
