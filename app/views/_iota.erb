@@ -1,0 +1,60 @@
+<form class="entry-form">
+
+    <div class="form-section">
+
+        <div class="form-row">
+            <label for="iota_title">Title</label>
+            <input readonly type="text" id="iota_title" name="iota[title]" class="field-input" value="<%= iota.title %>">
+        </div>
+
+        <div class="form-row two-col">
+            <div>
+                <label for="iota_type">Type</label>
+                <input readonly type="text" id="iota_type" name="iota[type]" class="field-input" value="<%= iota.type %>">
+            </div>
+            <div>
+                <label for="iota_created_at">Date archived</label>
+                <input readonly type="date" id="iota_created_at" name="iota[created_at]" class="field-input field-input-narrow" value="<%= iota.created_at %>">
+            </div>
+        </div>
+
+        <% if iota.collection %>
+            <div class="form-row">
+                <label for="iota_collection_id">Collection</label>
+                <input readonly type="text" id="iota_collection_id" name="iota[collection_id]" class="field-input" value="<%= iota.collection.title %>">
+            </div>
+        <% end %>
+
+        <div class="form-row">
+            <label for="iota_description">Description</label>
+            <textarea readonly id="iota_description" name="iota[description]" class="field-input" rows="4"><%= iota.description %></textarea>
+        </div>
+
+        <div class="form-row">
+            <label for="iota_tags">Tags</label>
+            <input readonly type="text" id="iota_tags" name="iota[tags]" class="field-input" value="<%= iota.tags.join(',') %>">
+        </div>
+
+        <!--
+        <div class="form-row">
+            <label for="iota_attachment">Attachment</label>
+            <input type="file" id="iota_attachment" name="iota[attachment]">
+        </div>
+        -->
+
+        <div class="form-row">
+            <label>Metadata</label>
+            <div id="metadata-rows" class="metadata-rows">
+                <% for key, value in iota.metadata %>
+                    <div class="metadata-row">
+                        <input readonly type="text" name="iota[metadata_keys][]" class="field-input" value="<%= key %>">
+                        <span class="metadata-eq">=</span>
+                        <input readonly type="text" name="iota[metadata_values][]" class="field-input" value="<%= value %>">
+                    </div>
+                <% end %>
+            </div>
+        </div>
+
+    </div>
+
+</form>

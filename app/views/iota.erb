@@ -8,8 +8,7 @@
         <div id="main">
             <%= erb :_breadcrumb %>
             <%= erb :_toolbar %>
-            <span><%= @iota.to_hash %></span>
-            <%= erb :_pagination %>
+            <%= erb :_iota, locals: { iota: @iota } %>
         </div>
     </div>
     <%= erb :_footer %>

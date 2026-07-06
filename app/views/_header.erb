@@ -2,7 +2,8 @@
 
 <div id="header">
     <div id="header-inner">
-        <a href="/" id="logo"><%= APP_TITLE %><span><%= APP_SUBTITLE %></span></a>
+        <img id="logo-image" src="/ark.png">
+        <a href="/" id="logo-text"><%= APP_TITLE %><span><%= APP_SUBTITLE %></span></a>
         <nav id="header-nav">
             <a href="/iotas" class="<%= page == 'Iotas' ? 'active' : '' %>">Entries</a>
             <a href="/collections" class="<%= page == 'Collections' ? 'active' : '' %>">Collections</a>
@@ -31,5 +32,11 @@
 
     search_button.onclick = (event) => {
         window.location = '/iotas?q=' + encodeURIComponent(search_input.value)
+    }
+
+    const logo_image = document.getElementById('logo-image')
+
+    logo_image.onclick = (event) => {
+        window.location = '/'
     }
 </script>
