@@ -27,6 +27,7 @@ require_relative '../helpers/tags'
 require_relative '../helpers/export'
 
 require_relative '../routes/index'
+require_relative '../routes/session'
 require_relative '../routes/api'
 require_relative '../routes/iota'
 require_relative '../routes/collection'
