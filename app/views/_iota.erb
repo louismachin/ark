@@ -42,18 +42,20 @@
         </div>
         -->
 
-        <div class="form-row">
-            <label>Metadata</label>
-            <div id="metadata-rows" class="metadata-rows">
-                <% for key, value in iota.metadata %>
-                    <div class="metadata-row">
-                        <input readonly type="text" name="iota[metadata_keys][]" class="field-input" value="<%= key %>">
-                        <span class="metadata-eq">=</span>
-                        <input readonly type="text" name="iota[metadata_values][]" class="field-input" value="<%= value %>">
-                    </div>
-                <% end %>
+        <% if iota.metadata.any? %>
+            <div class="form-row">
+                <label>Metadata</label>
+                <div id="metadata-rows" class="metadata-rows">
+                    <% for key, value in iota.metadata %>
+                        <div class="metadata-row">
+                            <input readonly type="text" name="iota[metadata_keys][]" class="field-input" value="<%= key %>">
+                            <span class="metadata-eq">=</span>
+                            <input readonly type="text" name="iota[metadata_values][]" class="field-input" value="<%= value %>">
+                        </div>
+                    <% end %>
+                </div>
             </div>
-        </div>
+        <% end %>
 
     </div>
 

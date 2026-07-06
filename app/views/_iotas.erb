@@ -16,7 +16,7 @@
                     <% end %>
                     <span>type: <a href="#"><%= iota.type %></a></span>
                 </div>
-                <div class="entry-desc"><%= iota.description %></div>
+                <div class="entry-desc"><%= iota.description.size > 160 ? iota.description[0, 160] + '...' : iota.description %></div>
                 <div class="entry-tags">
                     <% for tag in iota.tags %>
                         <a href="#"><%= tag %></a>
