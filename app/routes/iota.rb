@@ -1,4 +1,5 @@
 get '/iotas' do
+    @page = 'Iotas'
     @title = 'All Entries'
     @iotas = get_iotas.clone
     if params[:tag]
@@ -8,6 +9,11 @@ get '/iotas' do
     if params[:type]
         @iotas.select! { |i| i.type == params[:type] }
         @title = PLURAL_IOTA_TYPE_LABELS[params[:type]]
+        @page = PLURAL_IOTA_TYPE_LABELS[params[:type]]
+    end
+    if params[:q]
+        @iotas.select! { |i| i.match?(params[:q]) }
+        @title = "Search \"#{params[:q]}\""
     end
     erb :iotas
 end

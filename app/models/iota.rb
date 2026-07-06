@@ -71,4 +71,8 @@ class Iota
         return nil unless collection_ids
         find_collection_by_id(collection_ids.first)
     end
+
+    def match?(query)
+        ([@title, @description] + @tags).join(' ').include?(query)
+    end
 end

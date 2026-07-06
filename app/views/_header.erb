@@ -1,13 +1,16 @@
+<% page = defined?(page) ? page : 'Iotas' %>
+
 <div id="header">
     <div id="header-inner">
         <a href="/" id="logo"><%= APP_TITLE %><span><%= APP_SUBTITLE %></span></a>
         <nav id="header-nav">
-            <a href="#" class="active">Collections</a>
-            <a href="#">Writings</a>
-            <a href="#">Pictures</a>
-            <a href="#">Tags</a>
-            <a href="#">Import</a>
-            <a href="#">Settings</a>
+            <a href="/iotas" class="<%= page == 'Iotas' ? 'active' : '' %>">Entries</a>
+            <a href="/collections" class="<%= page == 'Collections' ? 'active' : '' %>">Collections</a>
+            <a href="/iotas?type=writing" class="<%= page == 'Writings' ? 'active' : '' %>">Writings</a>
+            <a href="/iotas?type=picture" class="<%= page == 'Pictures' ? 'active' : '' %>">Pictures</a>
+            <a href="/iotas?type=object" class="<%= page == 'Objects' ? 'active' : '' %>">Objects</a>
+            <a href="/tags" class="<%= page == 'Tags' ? 'active' : '' %>">Tags</a>
+            <a href="/settings" class="<%= page == 'Settings' ? 'active' : '' %>">Settings</a>
         </nav>
         <div id="header-search">
             <input id="search-input" type="text" placeholder="search archive...">
