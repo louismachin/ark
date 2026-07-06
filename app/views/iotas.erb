@@ -8,7 +8,7 @@
         <div id="main">
             <%= erb :_breadcrumb %>
             <%= erb :_toolbar %>
-            <%= erb :_iotas, locals: { iotas: defined?(@iotas) ? @iotas : get_iotas } %>
+            <%= erb :_iotas, locals: { title: @title, iotas: defined?(@iotas) ? @iotas : get_iotas } %>
             <%= erb :_pagination %>
         </div>
     </div>

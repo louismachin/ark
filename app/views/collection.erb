@@ -8,7 +8,7 @@
         <div id="main">
             <%= erb :_breadcrumb %>
             <%= erb :_toolbar %>
-            <%= erb :_iotas, locals: { collection: @collection, iotas: @collection.iotas } %>
+            <%= erb :_iotas, locals: { title: @collection.title, iotas: @collection.iotas } %>
             <%= erb :_pagination %>
         </div>
     </div>

@@ -19,11 +19,10 @@
     <div class="sbox">
         <h3>Filter by type</h3>
         <ul>
-            <li><a href="#">All types <span class="sbox-count"><%= get_iota_counts['All types'] %></span></a></li>
-            <% PLURAL_IOTA_TYPE_LABELS.each do |label| %>
-                <li><a href="#"><%=label %> <span class="sbox-count"><%= get_iota_counts[label] %></span></a></li>
+            <li><a href="/iotas">All types <span class="sbox-count"><%= get_iota_counts['All types'] %></span></a></li>
+            <% PLURAL_IOTA_TYPE_LABELS.each do |key, label| %>
+                <li><a href="/iotas?type=<%= key %>"><%= label %> <span class="sbox-count"><%= get_iota_counts[label] %></span></a></li>
             <% end %>
-            <li><a href="#">Other <span class="sbox-count"><%= get_iota_counts['Other'] %></span></a></li>
         </ul>
     </div>
 
@@ -31,7 +30,7 @@
         <h3>Tag cloud</h3>
         <div class="tag-cloud">
             <% for tag, css_class in get_tag_cloud %>
-                <a href="#" <%= css_class ? "class=\"#{css_class}\"" : "" %>><%= tag %></a>
+                <a href="/iotas?tag=<%= tag %>" <%= css_class ? "class=\"#{css_class}\"" : "" %>><%= tag %></a>
             <% end %>
         </div>
     </div>

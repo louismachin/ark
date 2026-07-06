@@ -1,4 +1,14 @@
 get '/iotas' do
+    @title = 'All Entries'
+    @iotas = get_iotas.clone
+    if params[:tag]
+        @iotas.select! { |i| i.tags.include?(params[:tag]) }
+        @title = params[:tag]
+    end
+    if params[:type]
+        @iotas.select! { |i| i.type == params[:type] }
+        @title = PLURAL_IOTA_TYPE_LABELS[params[:type]]
+    end
     erb :iotas
 end
 
