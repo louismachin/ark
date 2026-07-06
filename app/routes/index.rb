@@ -3,5 +3,6 @@ get '/' do
 end
 
 not_found do
-    redirect '/'
+    content_type :text
+    'Not found'
 end
