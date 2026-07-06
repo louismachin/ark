@@ -10,8 +10,12 @@
             <a href="/iotas?type=writing" class="<%= page == 'Writings' ? 'active' : '' %>">Writings</a>
             <a href="/iotas?type=picture" class="<%= page == 'Pictures' ? 'active' : '' %>">Pictures</a>
             <a href="/iotas?type=object" class="<%= page == 'Objects' ? 'active' : '' %>">Objects</a>
-            <a href="/tags" class="<%= page == 'Tags' ? 'active' : '' %>">Tags</a>
             <a href="/settings" class="<%= page == 'Settings' ? 'active' : '' %>">Settings</a>
+            <% unless current_user %>
+                <a href="/login" class="<%= page == 'Login' ? 'active' : '' %>">Login</a>
+            <% else %>
+                <a href="/logout">Logout</a>
+            <% end %>
         </nav>
         <div id="header-search">
             <input id="search-input" type="text" placeholder="search archive...">
