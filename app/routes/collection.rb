@@ -6,6 +6,12 @@ get '/collections/new' do
     erb :collection_edit
 end
 
+get '/collections/:collection_id' do
+    @collection = find_collection_by_id(params[:collection_id])
+    halt 404 unless @collection
+    erb :collection
+end
+
 post '/collections/new' do
     collection_params = params[:collection] || {}
  

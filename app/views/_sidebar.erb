@@ -1,11 +1,15 @@
+<% active_collection_id ||= nil %>
+
 <div id="sidebar">
     <div class="sbox">
         <h3>Collections</h3>
         <ul>
-            <li><a href="#" class="active">All entries <span class="sbox-count"><%= get_iotas.size %></span></a></li>
+            <li><a href="/iotas" class="<%= active_collection_id == nil ? 'active' : '' %>">All entries <span class="sbox-count"><%= get_iotas.size %></span></a></li>
             <li class="sep"></li>
             <% for collection in get_collections do %>
-                <li><a href="#"><%= collection.title %> <span class="sbox-count"><%= collection.size %></span></a></li>
+                <li><a href="/collections/<%= collection.id %>" class="<%= active_collection_id == collection.id ? 'active' : '' %>">
+                    <%= collection.title %> <span class="sbox-count"><%= collection.size %></span>
+                </a></li>
             <% end %>
             <li class="sep"></li>
             <li><a href="/collections/new">+ New collection</a></li>

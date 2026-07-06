@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<%= erb :_head %>
+<body>
+    <%= erb :_header %>
+    <div id="page">
+        <%= erb :_sidebar, locals: { active_collection_id: @collection.id } %>
+        <div id="main">
+            <%= erb :_breadcrumb %>
+            <%= erb :_toolbar %>
+            <span><%= @collection.to_hash %></span>
+            <%= erb :_pagination %>
+        </div>
+    </div>
+    <%= erb :_footer %>
+</body>
+</html>
