@@ -8,7 +8,7 @@
         <div id="main">
             <%= erb :_breadcrumb %>
             <%= erb :_toolbar %>
-            <span><%= @collection.to_hash %></span>
+            <%= erb :_iotas, locals: { collection: @collection, iotas: @collection.iotas } %>
             <%= erb :_pagination %>
         </div>
     </div>

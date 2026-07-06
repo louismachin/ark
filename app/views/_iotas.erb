@@ -1,5 +1,5 @@
 <div class="collection-header">
-    <h2>All Entries</h2>
+    <h2><%= defined?(collection) ? collection.title : 'All Entries' %></h2>
     <span class="meta"><%= iotas.size %> entries &mdash; sorted by date added (newest first)</span>
 </div>
 
