@@ -90,10 +90,10 @@ a:visited { color: #6a1a8a; }
 }
 #header-nav .divider {
     margin-bottom: 0 !important;
-    width: 1px;
+    width: 2px;
     height: 24px;
     margin: var(--padding-sm);
-    background-color: #e8e4da;
+    background-color: #1a3060;
 }
 #header-search {
     padding: var(--padding-sm) var(--padding);
