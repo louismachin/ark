@@ -31,3 +31,10 @@ def find_iota_by_id(id)
     get_iotas.each { |i| return i if i.id == id }
     return nil
 end
+
+def get_tags
+    return $tag_cache if $tag_cache
+
+    $tag_cache = get_iotas.map(&:tags).flatten.uniq.sort
+end
+    

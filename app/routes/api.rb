@@ -21,3 +21,8 @@ get '/api/collections/:collection_id.json' do
     content_type :json
     collection.to_hash.to_json
 end
+
+get '/api/tags.json' do
+    content_type :json
+    get_tags.to_json
+end
