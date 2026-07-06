@@ -6,6 +6,12 @@ get '/iotas/new' do
     erb :iota_edit
 end
 
+get '/iotas/:iota_id' do
+    @iota = find_iota_by_id(params[:iota_id])
+    halt 404 unless @iota
+    erb :iota
+end
+
 post '/iotas/new' do
     iota_params = params[:iota] || {}
  
