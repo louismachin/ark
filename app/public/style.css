@@ -96,12 +96,14 @@ a:visited { color: #6a1a8a; }
     background-color: #1a3060;
 }
 #header-search {
-    padding: var(--padding-sm) var(--padding);
     display: flex;
     align-items: center;
     gap: 4px;
     margin-left: var(--padding);
+    padding-top: var(--padding-sm);
+    padding-left: var(--padding);
     padding-bottom: var(--padding-sm);
+    padding-right: 0;
 }
 #header-search input {
     font-size: var(--font-size);
