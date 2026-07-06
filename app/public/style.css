@@ -93,7 +93,7 @@ a:visited { color: #6a1a8a; }
     width: 1px;
     height: 24px;
     margin: var(--padding-sm);
-    background-color: #c8daf4;
+    background-color: #e8e4da;
 }
 #header-search {
     padding: var(--padding-sm) var(--padding);
