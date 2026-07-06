@@ -19,15 +19,14 @@
                 <div class="entry-desc"><%= iota.description.size > 160 ? iota.description[0, 160] + '...' : iota.description %></div>
                 <div class="entry-tags">
                     <% for tag in iota.tags %>
-                        <a href="#"><%= tag %></a>
+                        <a href="/iotas?tag=<%= tag %>"><%= tag %></a>
                     <% end %>
                 </div>
             </div>
             <div class="entry-actions">
-                <a href="#">edit</a>
-                <a href="#">delete</a>
-                <a href="#">attach</a>
-                <a href="#">link</a>
+                <a href="/iotas/<%= iota.id %>/edit">edit</a>
+                <a href="/iotas/<%= iota.id %>/delete">delete</a>
+                <a href="/iotas/<%= iota.id %>">link</a>
             </div>
         </div>
     <% end %>
