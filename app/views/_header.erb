@@ -7,9 +7,11 @@
         <nav id="header-nav">
             <a href="/iotas" class="<%= page == 'Iotas' ? 'active' : '' %>">Entries</a>
             <a href="/collections" class="<%= page == 'Collections' ? 'active' : '' %>">Collections</a>
+            <div class="divider"></div>
             <a href="/iotas?type=writing" class="<%= page == 'Writings' ? 'active' : '' %>">Writings</a>
             <a href="/iotas?type=picture" class="<%= page == 'Pictures' ? 'active' : '' %>">Pictures</a>
             <a href="/iotas?type=object" class="<%= page == 'Objects' ? 'active' : '' %>">Objects</a>
+            <div class="divider"></div>
             <a href="/settings" class="<%= page == 'Settings' ? 'active' : '' %>">Settings</a>
             <% unless current_user %>
                 <a href="/login" class="<%= page == 'Login' ? 'active' : '' %>">Login</a>

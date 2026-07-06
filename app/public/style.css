@@ -88,6 +88,13 @@ a:visited { color: #6a1a8a; }
     border-radius: var(--border-radius) var(--border-radius) 0 0;
     font-weight: bold;
 }
+#header-nav .divider {
+    margin-bottom: 0 !important;
+    width: 1px;
+    height: 24px;
+    margin: var(--padding-sm);
+    background-color: #c8daf4;
+}
 #header-search {
     padding: var(--padding-sm) var(--padding);
     display: flex;
