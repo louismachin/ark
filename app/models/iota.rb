@@ -73,6 +73,7 @@ class Iota
     end
 
     def match?(query)
-        ([@title, @description] + @tags).join(' ').include?(query)
+        ([@title, @description] + @tags)
+            .join(' ').downcase.include?(query.downcase)
     end
 end
