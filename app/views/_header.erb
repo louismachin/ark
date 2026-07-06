@@ -22,11 +22,11 @@
 
     search_input.onkeypress = (event) => {
         if (event.key == 'Enter') {
-            window.location = '/search?q=' + encodeURIComponent(search_input.value)
+            window.location = '/iotas?q=' + encodeURIComponent(search_input.value)
         }
     }
 
     search_button.onclick = (event) => {
-        window.location = '/search?q=' + encodeURIComponent(search_input.value)
+        window.location = '/iotas?q=' + encodeURIComponent(search_input.value)
     }
 </script>
