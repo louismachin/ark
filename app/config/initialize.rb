@@ -11,7 +11,7 @@ configure do
     set :port, APP_PORT
     set :views, VIEWS_PATH
     set :public_folder, PUBLIC_PATH
-    set :environment, :production if false
+    set :environment, :production
     disable :protection
 end
 
