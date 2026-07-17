@@ -18,12 +18,6 @@ get '/iotas' do
     erb :iotas
 end
 
-get '/iotas/:iota_id' do
-    @iota = find_iota_by_id(params[:iota_id])
-    halt 404 unless @iota
-    erb :iota
-end
-
 get '/iotas/new' do
     erb :iota_edit
 end
@@ -116,4 +110,10 @@ post '/iotas/:iota_id/delete' do
     halt 404 unless @iota
     @iota.delete!
     redirect "/"
+end
+
+get '/iotas/:iota_id' do
+    @iota = find_iota_by_id(params[:iota_id])
+    halt 404 unless @iota
+    erb :iota
 end
