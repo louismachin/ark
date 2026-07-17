@@ -11,9 +11,6 @@
                 <div class="entry-title"><a href="/iotas/<%= iota.id %>"><%= iota.title %></a></div>
                 <div class="entry-meta">
                     <span>added <strong><%= iota.created_at %></strong></span>
-                    <% if iota.deleted? %>
-                        <span>DELETED!</span>
-                    <% end %>
                     <% if iota.collection %>
                         <span>in <a href="#"><%= iota.collection.title %></a></span>
                     <% end %>
