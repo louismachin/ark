@@ -35,7 +35,7 @@ post '/collections/new' do
         metadata:    metadata
     )
 
-    collection.save
+    collection.save!
 
     redirect '/'
 end

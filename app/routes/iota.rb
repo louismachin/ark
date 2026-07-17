@@ -55,7 +55,7 @@ post '/iotas/new' do
         collection_ids: collection_ids,
     )
 
-    iota.save
+    iota.save!
  
     # TODO: persist `iota` somewhere (file, DB, in-memory store, etc.)
     # TODO: handle iota_params[:attachment] (a Sinatra file upload hash
@@ -99,8 +99,21 @@ post '/iotas/:iota_id/edit' do
         collection_ids: collection_ids,
     )
 
-    @iota.save
+    @iota.save!
     # TODO: handle iota_params[:attachment] if a new file was uploaded
 
     redirect "/iotas/#{@iota.id}"
+end
+
+get '/iotas/:iota_id/delete' do
+    @iota = find_iota_by_id(params[:iota_id])
+    halt 404 unless @iota
+    erb :iota_delete
+end
+
+post '/iotas/:iota_id/delete' do
+    @iota = find_iota_by_id(params[:iota_id])
+    halt 404 unless @iota
+    @iota.delete!
+    redirect "/"
 end

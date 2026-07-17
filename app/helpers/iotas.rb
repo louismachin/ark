@@ -9,8 +9,19 @@ def get_iotas
         $writing_count += 1 if iota.writing?
         $picture_count += 1 if iota.picture?
         $other_count   += 1 if iota.other?
-        iota
-    }.sort_by(&:created_at)
+        iota.deleted? ? nil : iota
+    }.compact.sort_by(&:created_at)
+end
+
+def get_deleted_iotas
+    return $deleted_iota_cache if $deleted_iota_cache
+
+    FileUtils.mkdir_p(Iota::IOTA_PATH)
+
+    $deleted_iota_cache = Dir.glob(File.join(Iota::IOTA_PATH, '*.yml')).map { |file|
+        iota = Iota.from_hash(YAML.load_file(file))
+        iota.deleted? ? iota : nil
+    }.compact.sort_by(&:created_at)
 end
 
 def get_recent_iotas(n = 5)

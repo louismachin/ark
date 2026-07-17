@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<%= erb :_head %>
+<body>
+    <%= erb :_header %>
+    <div id="page">
+        <%= erb :_sidebar %>
+        <div id="main">
+            <%= erb :_breadcrumb %>
+            <%= erb :_iota_delete, locals: { iota: @iota } %>
+        </div>
+    </div>
+    <%= erb :_footer %>
+</body>
+</html>

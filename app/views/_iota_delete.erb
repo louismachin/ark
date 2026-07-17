@@ -1,0 +1,23 @@
+<div class="collection-header">
+    <h2>Delete Entry</h2>
+</div>
+
+<form class="entry-form" action="/iotas/<%= iota.id %>/delete" method="post" enctype="multipart/form-data">
+    <div class="form-section">
+        <div class="form-row">
+            <label for="iota_id">ID</label>
+            <input type="text" id="iota_id" name="iota[id]" class="field-input" value="<%= iota.id %>" readonly>
+        </div>
+
+        <div class="form-row">
+            <label for="iota_title">Title</label>
+            <input type="text" id="iota_title" name="iota[title]" class="field-input" value="<%= iota.title %>" readonly>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn primary">Delete Entry</button>
+            <a href="/iotas" class="btn">Cancel</a>
+            <span class="form-hint">* required fields</span>
+        </div>
+    </div>
+</form>

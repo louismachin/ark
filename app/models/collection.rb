@@ -23,7 +23,7 @@ class Collection
         }
     end
 
-    def save
+    def save!
         FileUtils.mkdir_p(COLLECTION_PATH)
         File.write(path, to_hash.to_yaml)
         clear_cache
