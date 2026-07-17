@@ -18,14 +18,14 @@ get '/iotas' do
     erb :iotas
 end
 
-get '/iotas/new' do
-    erb :iota_edit
-end
-
 get '/iotas/:iota_id' do
     @iota = find_iota_by_id(params[:iota_id])
     halt 404 unless @iota
     erb :iota
+end
+
+get '/iotas/new' do
+    erb :iota_edit
 end
 
 post '/iotas/new' do
@@ -62,4 +62,45 @@ post '/iotas/new' do
     #       with :tempfile, :filename, :type) if present
 
     redirect '/'
+end
+
+get '/iotas/:iota_id/edit' do
+    @iota = find_iota_by_id(params[:iota_id])
+    halt 404 unless @iota
+    erb :iota_edit
+end
+
+post '/iotas/:iota_id/edit' do
+    @iota = find_iota_by_id(params[:iota_id])
+    halt 404 unless @iota
+
+    iota_params = params[:iota] || {}
+    tags = (iota_params[:tags] || '').split(',').map(&:strip).reject(&:empty?)
+
+    keys = Array(iota_params[:metadata_keys])
+    values = Array(iota_params[:metadata_values])
+    metadata = keys.zip(values).each_with_object({}) do |(k, v), hash|
+        next if k.nil? || k.strip.empty?
+        hash[k.strip] = v.to_s.strip
+    end
+
+    collection_ids = iota_params[:collection_id] ? [iota_params[:collection_id]] : []
+
+    created_at = iota_params[:created_at]
+    created_at = @iota.created_at if created_at.nil? || created_at.empty?
+
+    @iota.update!(
+        title:          iota_params[:title],
+        description:    iota_params[:description],
+        tags:           tags,
+        type:           iota_params[:type],
+        created_at:     created_at,
+        metadata:       metadata,
+        collection_ids: collection_ids,
+    )
+
+    @iota.save
+    # TODO: handle iota_params[:attachment] if a new file was uploaded
+
+    redirect "/iotas/#{@iota.id}"
 end

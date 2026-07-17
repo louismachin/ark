@@ -14,6 +14,17 @@ class Iota
         @collection_ids = collection_ids
     end
 
+    def update!(title:, description:, tags:, type:, created_at:, metadata: {}, collection_ids: [])
+        @title          = title
+        @description    = description
+        @tags           = tags
+        @type           = type
+        @created_at     = created_at
+        @metadata       = metadata
+        @collection_ids = collection_ids
+        self
+    end
+
     def to_hash
         {
             'id'             => id,

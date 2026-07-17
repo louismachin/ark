@@ -3,27 +3,44 @@
     <span class="meta">Archive a new entry</span>
 </div>
 
-<form class="entry-form" action="/iotas/new" method="post" enctype="multipart/form-data">
+<% if autofill %>
+    <% action, method = "/iotas/#{iota.id}/edit", "post" %>
+<% else %>
+    <% action, method = "/iotas/new", "post" %>
+<% end %>
 
+<form class="entry-form" action="<%= action %>" method="<%= method %>" enctype="multipart/form-data">
     <div class="form-section">
 
         <div class="form-row">
             <label for="iota_title">Title</label>
-            <input type="text" id="iota_title" name="iota[title]" class="field-input" placeholder="Entry title">
+            <% if autofill %>
+                <input type="text" id="iota_title" name="iota[title]" class="field-input" value="<%= iota.title %>">
+            <% else %>
+                <input type="text" id="iota_title" name="iota[title]" class="field-input" placeholder="Entry title">
+            <% end %>
         </div>
 
         <div class="form-row two-col">
             <div>
                 <label for="iota_type">Type</label>
                 <select id="iota_type" name="iota[type]" class="field-input">
-                    <option value="object">Object</option>
-                    <option value="picture">Picture</option>
-                    <option value="writing">Writing</option>
+                    <% [['option', 'Option'], ['picture', 'Picture'], ['writing', 'Writing']].each do |value, label| %>
+                        <% if autofill %>
+                            <option value="<%= value %>" <%= iota.type == value ? 'selected' : '' %>><%= label %></option>
+                        <% else %>
+                            <option value="<%= value %>"><%= label %></option>
+                        <% end %>
+                    <% end %>
                 </select>
             </div>
             <div>
                 <label for="iota_created_at">Date archived</label>
-                <input type="date" id="iota_created_at" name="iota[created_at]" class="field-input field-input-narrow">
+                <% if autofill %>
+                    <input type="date" id="iota_created_at" name="iota[created_at]" class="field-input field-input-narrow" value="<%= iota.created_at %>">
+                <% else %>
+                    <input type="date" id="iota_created_at" name="iota[created_at]" class="field-input field-input-narrow">
+                <% end %>
             </div>
         </div>
 
@@ -32,19 +49,31 @@
             <select id="iota_collection_id" name="iota[collection_id]" class="field-input">
                 <option value="">None</option>
                 <% for collection in get_collections %>
-                    <option value="<%= collection.id %>"><%= collection.title %></option>
+                    <% if autofill %>
+                        <option value="<%= collection.id %>" <%= iota.collection == collection.id ? 'selected' : '' %>><%= collection.title %></option>
+                    <% else %>
+                        <option value="<%= collection.id %>"><%= collection.title %></option>
+                    <% end %>
                 <% end %>
             </select>
         </div>
 
         <div class="form-row">
             <label for="iota_description">Description</label>
-            <textarea id="iota_description" name="iota[description]" class="field-input" rows="4" placeholder="Short description of this entry&hellip;"></textarea>
+            <% if autofill %>
+                <textarea id="iota_description" name="iota[description]" class="field-input" rows="4" placeholder="Short description of this entry&hellip;"><%= iota.description %></textarea>
+            <% else %>
+                <textarea id="iota_description" name="iota[description]" class="field-input" rows="4" placeholder="Short description of this entry&hellip;"></textarea>
+            <% end %>
         </div>
 
         <div class="form-row">
             <label for="iota_tags">Tags</label>
-            <input type="text" id="iota_tags" name="iota[tags]" class="field-input" placeholder="comma, separated, tags">
+            <% if autofill %>
+                <input type="text" id="iota_tags" name="iota[tags]" class="field-input" value="<%= iota.tags.join(', ') %>">
+            <% else %>
+                <input type="text" id="iota_tags" name="iota[tags]" class="field-input" placeholder="comma, separated, tags">
+            <% end %>
         </div>
 
         <div class="form-row">
@@ -55,24 +84,33 @@
         <div class="form-row">
             <label>Metadata</label>
             <div id="metadata-rows" class="metadata-rows">
-                <div class="metadata-row">
-                    <input type="text" name="iota[metadata_keys][]" class="field-input" placeholder="key">
-                    <span class="metadata-eq">=</span>
-                    <input type="text" name="iota[metadata_values][]" class="field-input" placeholder="value">
-                    <a href="#" class="btn metadata-remove" onclick="return removeMetadataRow(this)">&times;</a>
-                </div>
+                <% if autofill && iota.metadata && !iota.metadata.empty? %>
+                    <% iota.metadata.each do |key, value| %>
+                        <div class="metadata-row">
+                            <input type="text" name="iota[metadata_keys][]" class="field-input" placeholder="key" value="<%= key %>">
+                            <span class="metadata-eq">=</span>
+                            <input type="text" name="iota[metadata_values][]" class="field-input" placeholder="value" value="<%= value %>">
+                            <a href="#" class="btn metadata-remove" onclick="return removeMetadataRow(this)">&times;</a>
+                        </div>
+                    <% end %>
+                <% else %>
+                    <div class="metadata-row">
+                        <input type="text" name="iota[metadata_keys][]" class="field-input" placeholder="key">
+                        <span class="metadata-eq">=</span>
+                        <input type="text" name="iota[metadata_values][]" class="field-input" placeholder="value">
+                        <a href="#" class="btn metadata-remove" onclick="return removeMetadataRow(this)">&times;</a>
+                    </div>
+                <% end %>
             </div>
             <a href="#" class="btn metadata-add" onclick="return addMetadataRow()">+ add field</a>
         </div>
 
+        <div class="form-actions">
+            <button type="submit" class="btn primary">Add Entry</button>
+            <a href="/iotas" class="btn">Cancel</a>
+            <span class="form-hint">* required fields</span>
+        </div>
     </div>
-
-    <div class="form-actions">
-        <button type="submit" class="btn primary">Add Entry</button>
-        <a href="/iotas" class="btn">Cancel</a>
-        <span class="form-hint">* required fields</span>
-    </div>
-
 </form>
 
 <script>

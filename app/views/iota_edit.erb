@@ -7,7 +7,7 @@
         <%= erb :_sidebar %>
         <div id="main">
             <%= erb :_breadcrumb %>
-            <%= erb :_iota_form %>
+            <%= erb :_iota_form, locals: { autofill: defined?(@iota), iota: @iota } %>
         </div>
     </div>
     <%= erb :_footer %>
