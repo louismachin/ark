@@ -8,7 +8,7 @@
         <div class="entry">
             <input type="checkbox">
             <div class="entry-body">
-                <div class="entry-title"><a href="#"><%= collection.title %></a></div>
+                <div class="entry-title"><a href="/collections/<%= collection.id %>"><%= collection.title %></a></div>
                 <div class="entry-meta">
                     <span>added <strong><%= collection.created_at %></strong></span>
                     <span>has <a href="#"><%= collection.size %> <%= collection.size == 1 ? 'entry' : 'entries' %></a></span>
