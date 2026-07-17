@@ -45,6 +45,7 @@ post '/iotas/new' do
         tags:           tags,
         type:           iota_params[:type],
         created_at:     created_at,
+        deleted_at:     nil,
         metadata:       metadata,
         collection_ids: collection_ids,
     )
@@ -89,6 +90,7 @@ post '/iotas/:iota_id/edit' do
         tags:           tags,
         type:           iota_params[:type],
         created_at:     created_at,
+        deleted_at:     nil,
         metadata:       metadata,
         collection_ids: collection_ids,
     )

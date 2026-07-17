@@ -25,7 +25,7 @@
             <div>
                 <label for="iota_type">Type</label>
                 <select id="iota_type" name="iota[type]" class="field-input">
-                    <% [['option', 'Option'], ['picture', 'Picture'], ['writing', 'Writing']].each do |value, label| %>
+                    <% [['object', 'Object'], ['picture', 'Picture'], ['writing', 'Writing']].each do |value, label| %>
                         <% if autofill %>
                             <option value="<%= value %>" <%= iota.type == value ? 'selected' : '' %>><%= label %></option>
                         <% else %>
