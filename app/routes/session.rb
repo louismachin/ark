@@ -10,14 +10,18 @@ def get_users
 end
 
 helpers do
-    def protect!
+    def logged_in?
         token = request.cookies[APP_COOKIE]
-        redirect '/login' unless $known_cookies.key?(token)
+        $known_cookies.key?(token)
+    end
+
+    def protect!
+        redirect '/login' unless logged_in?
         return true
     end
 
     def current_user
-        return nil unless protect!
+        return nil unless logged_in?
         token = request.cookies[APP_COOKIE]
         $known_cookies[token][:user]
     rescue
