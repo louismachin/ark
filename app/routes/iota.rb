@@ -19,10 +19,12 @@ get '/iotas' do
 end
 
 get '/iotas/new' do
+    protect!
     erb :iota_edit
 end
 
 post '/iotas/new' do
+    protect!
     iota_params = params[:iota] || {}
  
     tags = (iota_params[:tags] || '').split(',').map(&:strip).reject(&:empty?)
@@ -60,12 +62,14 @@ post '/iotas/new' do
 end
 
 get '/iotas/:iota_id/edit' do
+    protect!
     @iota = find_iota_by_id(params[:iota_id])
     halt 404 unless @iota
     erb :iota_edit
 end
 
 post '/iotas/:iota_id/edit' do
+    protect!
     @iota = find_iota_by_id(params[:iota_id])
     halt 404 unless @iota
 
@@ -102,12 +106,14 @@ post '/iotas/:iota_id/edit' do
 end
 
 get '/iotas/:iota_id/delete' do
+    protect!
     @iota = find_iota_by_id(params[:iota_id])
     halt 404 unless @iota
     erb :iota_delete
 end
 
 post '/iotas/:iota_id/delete' do
+    protect!
     @iota = find_iota_by_id(params[:iota_id])
     halt 404 unless @iota
     @iota.delete!

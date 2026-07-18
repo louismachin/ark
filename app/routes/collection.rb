@@ -3,16 +3,12 @@ get '/collections' do
 end
 
 get '/collections/new' do
+    protect!
     erb :collection_edit
 end
 
-get '/collections/:collection_id' do
-    @collection = find_collection_by_id(params[:collection_id])
-    halt 404 unless @collection
-    erb :collection
-end
-
 post '/collections/new' do
+    protect!
     collection_params = params[:collection] || {}
  
     tags = (collection_params[:tags] || '').split(',').map(&:strip).reject(&:empty?)
@@ -38,4 +34,10 @@ post '/collections/new' do
     collection.save!
 
     redirect '/'
+end
+
+get '/collections/:collection_id' do
+    @collection = find_collection_by_id(params[:collection_id])
+    halt 404 unless @collection
+    erb :collection
 end

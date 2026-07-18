@@ -12,7 +12,8 @@ end
 helpers do
     def protect!
         token = request.cookies[APP_COOKIE]
-        return $known_cookies.key?(token)
+        redirect '/login' unless $known_cookies.key?(token)
+        return true
     end
 
     def current_user
