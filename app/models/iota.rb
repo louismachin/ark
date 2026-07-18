@@ -105,4 +105,8 @@ class Iota
         ([@title, @description] + @tags)
             .join(' ').downcase.include?(query.downcase)
     end
+
+    def key
+        metadata.dig('key')
+    end
 end
