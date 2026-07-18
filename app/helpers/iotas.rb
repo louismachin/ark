@@ -39,7 +39,7 @@ def get_iota_counts
 end
 
 def find_iota_by_id(id)
-    get_iotas.each { |i| return i if i.id == id || i.metadata.dig('key') == id }
+    get_iotas.each { |i| return i if i.id == id || i.key == id }
     return nil
 end
 
