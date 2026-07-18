@@ -15,7 +15,7 @@ class Iota
         @collection_ids = collection_ids
     end
 
-    def update!(title:, description:, tags:, type:, created_at:, metadata: {}, collection_ids: [])
+    def update!(title:, description:, tags:, type:, created_at:, deleted_at: metadata: {}, collection_ids: [])
         @title          = title
         @description    = description
         @tags           = tags
@@ -69,6 +69,11 @@ class Iota
             metadata:       hash['metadata'] || {},
             collection_ids: hash['collection_ids'] || [],
         )
+    end
+
+    def mini_description
+        value = meteadata['terse'] || @description
+        value.size > 160 ? value[0, 160] + '...' : value
     end
 
     def object?
