@@ -72,7 +72,7 @@ class Iota
     end
 
     def mini_description
-        value = meteadata['terse'] || @description
+        value = metadata['terse'] || description
         value.size > 160 ? value[0, 160] + '...' : value
     end
 
@@ -93,7 +93,7 @@ class Iota
     end
 
     def deleted?
-        @deleted_at
+        !(deleted_at == nil)
     end
 
     def collection # assumes 1 collection
