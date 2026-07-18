@@ -50,7 +50,7 @@
                 <option value="">None</option>
                 <% for collection in get_collections %>
                     <% if autofill %>
-                        <option value="<%= collection.id %>" <%= iota.collection == collection.id ? 'selected' : '' %>><%= collection.title %></option>
+                        <option value="<%= collection.id %>" <%= iota.collection.id == collection.id ? 'selected' : '' %>><%= collection.title %></option>
                     <% else %>
                         <option value="<%= collection.id %>"><%= collection.title %></option>
                     <% end %>
