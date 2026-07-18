@@ -26,3 +26,9 @@ get '/api/tags.json' do
     content_type :json
     get_tags.to_json
 end
+
+get '/api/tags/:tag.json' do
+    content_type :json
+    tag = params[:tag]
+    get_iotas.select { |iota| iota.tags.include?(tag) }.map(&:to_hash).to_json
+end
