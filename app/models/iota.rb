@@ -15,7 +15,7 @@ class Iota
         @collection_ids = collection_ids
     end
 
-    def update!(title:, description:, tags:, type:, created_at:, deleted_at: metadata: {}, collection_ids: [])
+    def update!(title:, description:, tags:, type:, created_at:, deleted_at:, metadata: {}, collection_ids: [])
         @title          = title
         @description    = description
         @tags           = tags
