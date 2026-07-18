@@ -6,7 +6,7 @@
 <div class="entry-list">
     <% for iota in iotas %>
         <div class="entry">
-            <input type="checkbox">
+            <input class="iota-checkbox" type="checkbox" iota_id="<%= iota.id %>">
             <div class="entry-body">
                 <div class="entry-title"><a href="/iotas/<%= iota.id %>"><%= iota.title %></a></div>
                 <div class="entry-meta">
@@ -31,3 +31,21 @@
         </div>
     <% end %>
 </div>
+
+<script>
+    let selected_iota_ids = []
+
+    const checkbox_doms = document.getElementsByClassName('iota-checkbox')
+    for (let ix = 0; ix < checkbox_doms.length; ix++) {
+        checkbox_doms[ix].oninput = () => updateSelectedIotas()
+    }
+
+    function updateSelectedIotas() {
+        selected_iota_ids = []
+        for (let ix = 0; ix < checkbox_doms.length; ix++) {
+            let iota = checkbox_doms[ix]
+            if (iota.checked) selected_iota_ids.push(iota.getAttribute('iota_id'))
+        }
+        console.log('Selected iota IDs: ', selected_iota_ids)
+    }
+</script>
