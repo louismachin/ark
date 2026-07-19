@@ -39,5 +39,10 @@ end
 get '/collections/:collection_id' do
     @collection = find_collection_by_id(params[:collection_id])
     halt 404 unless @collection
+
+    @pagination = paginate(@collection.iotas, params[:page])
+    @iotas = @pagination[:items]
+    @base_params = {}
+
     erb :collection
 end
