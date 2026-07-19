@@ -10,7 +10,7 @@ def get_iotas
         $picture_count += 1 if iota.picture?
         $other_count   += 1 if iota.other?
         iota.deleted? ? nil : iota
-    }.compact.sort_by(&:created_at)
+    }.compact.sort_by(&:created_at).reverse
 end
 
 def get_deleted_iotas
@@ -25,7 +25,7 @@ def get_deleted_iotas
 end
 
 def get_recent_iotas(n = 5)
-    get_iotas.sort_by(&:created_at).first(n)
+    get_iotas.sort_by(&:created_at).reverse.first(n)
 end
 
 def get_iota_counts
