@@ -77,9 +77,20 @@
         </div>
 
         <div class="form-row">
+            <label for="iota_links">Links</label>
+            <% if autofill %>
+                <textarea id="iota_links" name="iota[links]" class="field-input" rows="4" placeholder=""><%= iota.links&.join("\n") %></textarea>
+            <% else %>
+                <textarea id="iota_links" name="iota[links]" class="field-input" rows="4" placeholder=""></textarea>
+            <% end %>
+        </div>
+
+        <!--
+        <div class="form-row">
             <label for="iota_attachment">Attachment</label>
             <input type="file" id="iota_attachment" name="iota[attachment]">
         </div>
+        -->
 
         <div class="form-row">
             <label>Metadata</label>

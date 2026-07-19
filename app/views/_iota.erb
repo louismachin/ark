@@ -35,6 +35,20 @@
             <input readonly type="text" id="iota_tags" name="iota[tags]" class="field-input" value="<%= iota.tags.join(',') %>">
         </div>
 
+
+        <% if iota.links.any? %>
+            <div class="form-row">
+                <label>Link</label>
+                <div id="link-rows" class="metadata-rows">
+                    <% for link in iota.links %>
+                        <div class="metadata-row">
+                            <a class="form" href="<%= link %>" target="_blank"><%= link %></a>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+
         <!--
         <div class="form-row">
             <label for="iota_attachment">Attachment</label>

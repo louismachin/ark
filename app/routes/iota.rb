@@ -44,6 +44,7 @@ post '/iotas/new' do
     iota = Iota.new(
         title:          iota_params[:title],
         description:    iota_params[:description],
+        links:          iota_params[:links].split("\n"),
         tags:           tags,
         type:           iota_params[:type],
         created_at:     created_at,
@@ -76,6 +77,8 @@ post '/iotas/:iota_id/edit' do
     iota_params = params[:iota] || {}
     tags = (iota_params[:tags] || '').split(',').map(&:strip).reject(&:empty?)
 
+    links = iota_params[:links].split("\n").map(&:chomp).map(&:strip).reject(&:empty?)
+
     keys = Array(iota_params[:metadata_keys])
     values = Array(iota_params[:metadata_values])
     metadata = keys.zip(values).each_with_object({}) do |(k, v), hash|
@@ -91,6 +94,7 @@ post '/iotas/:iota_id/edit' do
     @iota.update!(
         title:          iota_params[:title],
         description:    iota_params[:description],
+        links:          links,
         tags:           tags,
         type:           iota_params[:type],
         created_at:     created_at,

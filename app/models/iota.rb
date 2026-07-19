@@ -1,12 +1,15 @@
 class Iota
     IOTA_PATH = File.join(DATA_PATH, 'iotas')
 
-    attr_reader :id, :title, :description, :tags, :type, :created_at, :deleted_at, :metadata, :collection_ids
+    attr_reader :id, :title, :description
+    attr_reader :tags, :type, :metadata, :links
+    attr_reader :created_at, :deleted_at, :collection_ids
 
-    def initialize(title:, description:, tags:, type:, created_at:, deleted_at:, metadata: {}, collection_ids: [], id: nil)
+    def initialize(title:, description:, links:, tags:, type:, created_at:, deleted_at:, metadata: {}, collection_ids: [], id: nil)
         @id             = id || SecureRandom.hex(8)
         @title          = title
         @description    = description
+        @links          = links
         @tags           = tags
         @type           = type
         @created_at     = created_at
@@ -15,9 +18,10 @@ class Iota
         @collection_ids = collection_ids
     end
 
-    def update!(title:, description:, tags:, type:, created_at:, deleted_at:, metadata: {}, collection_ids: [])
+    def update!(title:, description:, links:, tags:, type:, created_at:, deleted_at:, metadata: {}, collection_ids: [])
         @title          = title
         @description    = description
+        @links          = links
         @tags           = tags
         @type           = type
         @created_at     = created_at
@@ -37,6 +41,7 @@ class Iota
             'id'             => id,
             'title'          => title,
             'description'    => description,
+            'links'          => links,
             'tags'           => tags,
             'type'           => type,
             'created_at'     => created_at,
@@ -62,6 +67,7 @@ class Iota
             id:             hash['id'],
             title:          hash['title'],
             description:    hash['description'],
+            links:          hash['links'] || [],
             tags:           hash['tags'] || [],
             type:           hash['type'],
             created_at:     hash['created_at'],
