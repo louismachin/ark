@@ -10,7 +10,7 @@ def get_iotas
         $picture_count += 1 if iota.picture?
         $other_count   += 1 if iota.other?
         iota.deleted? ? nil : iota
-    }.compact.sort_by(&:created_at).reverse * 10
+    }.compact.sort_by(&:created_at).reverse
 end
 
 def get_deleted_iotas
