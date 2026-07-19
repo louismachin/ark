@@ -1,10 +1,37 @@
-<div id="pagination">
-    <a href="#">&laquo; prev</a>
-    <span class="current">1</span>
-    <a href="#">2</a>
-    <a href="#">3</a>
-    <span class="gap">&hellip;</span>
-    <a href="#">18</a>
-    <a href="#">next &raquo;</a>
-    <span style="margin-left: 10px; border: none; background: none; font-size: 11px; color: #888;">showing 1&ndash;20 of 342</span>
-</div>
+<% if pagination[:total_pages] > 1 %>
+    <div id="pagination">
+        <% if pagination[:page] > 1 %>
+            <a href="<%= pagination_url(pagination[:page] - 1, base_params) %>">&laquo; prev</a>
+        <% else %>
+            <span class="disabled">&laquo; prev</span>
+        <% end %>
+
+        <% window, first_page, last_page, current = 2, 1, pagination[:total_pages], pagination[:page] %>
+
+        <% pages_to_show = ([first_page, last_page] + ((current - window)..(current + window)).to_a)
+            .select { |p| p >= first_page && p <= last_page }.uniq.sort %>
+
+        <% prev_page = nil %>
+        <% pages_to_show.each do |p| %>
+            <% if prev_page && p - prev_page > 1 %>
+                <span class="gap">&hellip;</span>
+            <% end %>
+            <% if p == current %>
+                <span class="current"><%= p %></span>
+            <% else %>
+                <a href="<%= pagination_url(p, base_params) %>"><%= p %></a>
+            <% end %>
+            <% prev_page = p %>
+        <% end %>
+
+        <% if pagination[:page] < pagination[:total_pages] %>
+            <a href="<%= pagination_url(pagination[:page] + 1, base_params) %>">next &raquo;</a>
+        <% else %>
+            <span class="disabled">next &raquo;</span>
+        <% end %>
+
+        <span style="margin-left: 10px; border: none; background: none; font-size: 11px; color: #888;">
+            showing <%= pagination[:range_start] %>&ndash;<%= pagination[:range_end] %> of <%= pagination[:total] %>
+        </span>
+    </div>
+<% end %>

@@ -9,7 +9,7 @@
             <%= erb :_breadcrumb %>
             <%= erb :_toolbar %>
             <%= erb :_iotas, locals: { title: @title, iotas: defined?(@iotas) ? @iotas : get_iotas } %>
-            <%= erb :_pagination %>
+            <%= erb :_pagination, locals: { pagination: @pagination, base_params: @base_params } %>
         </div>
     </div>
     <%= erb :_footer %>

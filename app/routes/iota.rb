@@ -15,6 +15,11 @@ get '/iotas' do
         @iotas.select! { |i| i.match?(params[:q]) }
         @title = "Search \"#{params[:q]}\""
     end
+
+    @pagination = paginate(@iotas, params[:page])
+    @iotas = @pagination[:items]
+    @base_params = { 'tag' => params[:tag], 'type' => params[:type], 'q' => params[:q] }
+
     erb :iotas
 end
 
